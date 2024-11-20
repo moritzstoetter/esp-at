@@ -7,6 +7,4 @@
 #include "esp_at_core.h"
 #include "esp_at.h"
 
-/**
- * @brief You can include more header files here for your own AT commands.
- */
+bool esp_at_custom_cmd_register(void);

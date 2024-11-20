@@ -10,9 +10,8 @@
 
 static uint8_t at_test_cmd_test(uint8_t *cmd_name)
 {
-    uint8_t buffer[64] = {0};
-    snprintf((char *)buffer, 64, "test command: <AT%s=?> is executed\r\n", cmd_name);
-    esp_at_port_write_data(buffer, strlen((char *)buffer));
+    char * resp = "Ahoi discoverer, your quest begins!\r\n";
+    esp_at_port_write_data(resp, strlen(resp));
 
     return ESP_AT_RESULT_CODE_OK;
 }
@@ -67,7 +66,7 @@ static uint8_t at_exe_cmd_test(uint8_t *cmd_name)
 }
 
 static const esp_at_cmd_struct at_custom_cmd[] = {
-    {"+TEST", at_test_cmd_test, at_query_cmd_test, at_setup_cmd_test, at_exe_cmd_test},
+    {"+CUSTOM_DEMO", at_test_cmd_test, at_query_cmd_test, at_setup_cmd_test, at_exe_cmd_test},
     /**
      * @brief You can define your own AT commands here.
      */
